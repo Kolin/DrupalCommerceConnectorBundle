@@ -5,11 +5,12 @@ namespace Actualys\Bundle\DrupalCommerceConnectorBundle\Writer;
 use Actualys\Bundle\DrupalCommerceConnectorBundle\Item\DrupalItemStep;
 use Akeneo\Bundle\BatchBundle\Item\ItemWriterInterface;
 use Akeneo\Bundle\BatchBundle\Event\InvalidItemEvent;
-use Akeneo\Bundle\BatchBundle\Job\ExitStatus;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Akeneo\Bundle\BatchBundle\Event\EventInterface;
 
+
+use Akeneo\Bundle\BatchBundle\Job\ExitStatus;
 /**
  * Class ProductWriter
  *
@@ -17,14 +18,13 @@ use Akeneo\Bundle\BatchBundle\Event\EventInterface;
  */
 class ProductWriter extends DrupalItemStep implements ItemWriterInterface
 {
-
     public function __construct(EventDispatcher $eventDispatcher)
     {
         $this->eventDispatcher = $eventDispatcher;
         $this->productandler   = $eventDispatcher;
     }
 
-    /**x
+    /**
      *
      * @return array
      */
@@ -40,8 +40,7 @@ class ProductWriter extends DrupalItemStep implements ItemWriterInterface
     {
         foreach ($items as $item) {
             try {
-          //file_put_contents('product.json', json_encode($item));
-              $this->webservice->sendProduct($item);
+                $this->webservice->sendProduct($item);
             } catch (\Exception $e) {
                 $event = new InvalidItemEvent(
                   __CLASS__,
@@ -54,7 +53,6 @@ class ProductWriter extends DrupalItemStep implements ItemWriterInterface
                   EventInterface::INVALID_ITEM,
                   $event
                 );
-
 
                 // Loggin Interface
                 $this->stepExecution->addWarning(
@@ -78,6 +76,4 @@ class ProductWriter extends DrupalItemStep implements ItemWriterInterface
 
         }
     }
-
-
 }
