@@ -21,26 +21,31 @@ abstract class DrupalItemStep extends AbstractConfigurableStepElement implements
 
     /**
      * @var string
+     * @Assert\NotBlank(groups={"Execution"})
      */
     protected $baseUrl;
 
     /**
      * @var string
+     * @Assert\NotBlank(groups={"Execution"})
      */
     protected $endpoint;
 
     /**
      * @var string
+     * @Assert\NotBlank(groups={"Execution"})
      */
     protected $resourcePath;
 
     /**
      * @var string Http login
+     * @Assert\NotBlank(groups={"Execution"})
      */
     protected $httpLogin;
 
     /**
      * @var string Http password
+     * @Assert\NotBlank(groups={"Execution"})
      */
     protected $httpPassword;
 
@@ -224,5 +229,4 @@ abstract class DrupalItemStep extends AbstractConfigurableStepElement implements
     {
         $this->endpoint = $endpoint;
     }
-
 }

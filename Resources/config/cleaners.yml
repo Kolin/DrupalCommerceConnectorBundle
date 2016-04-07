@@ -1,8 +1,0 @@
-parameters:
-    actualys_drupal_commerce_connector.cleaner.published_product_media.class:                     Actualys\Bundle\DrupalCommerceConnectorBundle\Cleaner\PublishedProductMediaCleaner
-
-services:
-     actualys_drupal_commerce_connector.cleaner.published_product_media:
-         class: %actualys_drupal_commerce_connector.cleaner.published_product_media.class%
-         arguments:
-             - @service_container
